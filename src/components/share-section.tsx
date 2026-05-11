@@ -1,0 +1,104 @@
+// src/components/share-section.tsx
+import { useCallback, useState } from 'react'
+import { motion } from 'framer-motion'
+import { shareMessage } from '../config/site-config'
+
+function buildUrl(base: string, params: Record<string, string>): string {
+  const u = new URL(base)
+  for (const [k, v] of Object.entries(params)) u.searchParams.set(k, v)
+  return u.toString()
+}
+
+const shareActions = [
+  { label: 'Facebook', kind: 'facebook' as const },
+  { label: 'WhatsApp', kind: 'whatsapp' as const },
+  { label: 'SMS', kind: 'sms' as const },
+  { label: 'X', kind: 'x' as const },
+  { label: 'LinkedIn', kind: 'linkedin' as const },
+] as const
+
+export function ShareSection() {
+  const [copied, setCopied] = useState(false)
+  const pageUrl = typeof window !== 'undefined' ? window.location.href : ''
+
+  const share = useCallback(
+    (kind: (typeof shareActions)[number]['kind']) => {
+      const text = `${shareMessage} ${pageUrl}`.trim()
+
+      const urls: Record<typeof kind, string> = {
+        facebook: buildUrl('https://www.facebook.com/sharer/sharer.php', {
+          u: pageUrl,
+        }),
+        whatsapp: `https://wa.me/?text=${encodeURIComponent(text)}`,
+        x: buildUrl('https://twitter.com/intent/tweet', {
+          url: pageUrl,
+          text: shareMessage,
+        }),
+        linkedin: buildUrl(
+          'https://www.linkedin.com/sharing/share-offsite/',
+          { url: pageUrl },
+        ),
+        sms: `sms:?body=${encodeURIComponent(text)}`,
+      }
+
+      window.open(urls[kind], '_blank', 'noopener,noreferrer')
+    },
+    [pageUrl],
+  )
+
+  const copyLink = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(pageUrl)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 2200)
+    } catch {
+      setCopied(false)
+    }
+  }, [pageUrl])
+
+  return (
+    <section
+      id="partager"
+      className="border-t border-linen bg-paper px-4 py-16 sm:px-6 sm:py-20"
+    >
+      <div className="mx-auto max-w-3xl text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange">
+            Solidarité
+          </p>
+          <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">
+            Partager
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted">
+            Si vous ne pouvez pas donner, partager cette page est déjà une aide
+            précieuse.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-2.5">
+            {shareActions.map((action) => (
+              <button
+                key={action.label}
+                type="button"
+                onClick={() => share(action.kind)}
+                className="rounded-lg border border-linen bg-ivory px-4 py-2.5 text-sm font-medium text-ink transition hover:border-blue/30 hover:bg-blue-soft/60 hover:text-blue"
+              >
+                {action.label}
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={() => void copyLink()}
+              className="rounded-lg border border-blue-deep/40 bg-gradient-to-br from-blue to-blue-deep px-4 py-2.5 text-sm font-semibold text-paper transition hover:from-blue-deep hover:to-blue-night"
+            >
+              {copied ? 'Lien copié' : 'Copier le lien'}
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}

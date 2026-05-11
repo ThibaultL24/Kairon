@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+
+/* Bleu = confiance / action. Orange chaud = vie, espoir (accent ~10%). Neutres = respiration. */
+@theme {
+  --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --font-body: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ivory: #fffdf8;
+  --color-cream: #f7f1e8;
+  --color-paper: #ffffff;
+  --color-linen: #e8ded0;
+
+  --color-ink: #24313a;
+  --color-muted: #6e767c;
+
+  --color-blue: #2f6fa3;
+  --color-blue-deep: #24557d;
+  --color-blue-night: #1d4566;
+  --color-blue-soft: #dbe9f4;
+
+  --color-orange: #d88a4b;
+  --color-apricot: #f3d6bc;
+  --color-amber-soft: #e9bc74;
+
+  --color-sage: #a8b79f;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-muted antialiased;
+    background:
+      radial-gradient(
+        circle at top left,
+        rgba(243, 214, 188, 0.45),
+        transparent 30rem
+      ),
+      radial-gradient(
+        circle at top right,
+        rgba(219, 233, 244, 0.65),
+        transparent 34rem
+      ),
+      linear-gradient(180deg, #fffdf8 0%, #f7f1e8 100%);
+  }
+
+  ::selection {
+    @apply bg-apricot/80 text-ink;
+  }
+}
