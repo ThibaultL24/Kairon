@@ -6,7 +6,7 @@ export function Grin2bSection() {
   return (
     <section
       id="comprendre"
-      className="border-y border-linen bg-linear-to-r from-ivory via-cream/80 to-ivory px-4 py-16 sm:px-6 sm:py-20"
+      className="border-t border-linen bg-linear-to-r from-ivory via-cream/80 to-ivory px-4 py-16 sm:px-6 sm:py-20"
     >
       <div className="mx-auto max-w-5xl">
         <motion.div
