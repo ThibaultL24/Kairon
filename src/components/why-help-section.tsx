@@ -9,12 +9,16 @@ interface NeedRow {
 
 const rows: NeedRow[] = [
   {
-    need: 'Stages intensifs (notamment à Barcelone)',
-    why: 'Renforcer motricité, posture et autonomie au-delà du quotidien.',
+    need: 'Stages de rééducation spécialisée (Barcelone, Pologne…)',
+    why: "Seuls certains centres proposent une prise en charge ciblée GRIN2B avec des résultats concrets pour Kaïron — l'association aide à financer ces séjours.",
   },
   {
-    need: 'Kinésithérapie, psychomotricité, orthophonie',
-    why: 'Accompagner le développement jour après jour, avec régularité.',
+    need: 'Séances Snoezelen',
+    why: 'Un espace de calme et de découvertes sensorielles pour apaiser, rassurer et créer du lien.',
+  },
+  {
+    need: 'Matériel adapté du quotidien',
+    why: 'Chaussures adaptées et coques, bodys adaptés à la gastrostomie, équipements sur mesure : beaucoup de frais restent à la charge de la famille.',
   },
   {
     need: 'Poussette médicalisée',
@@ -25,8 +29,8 @@ const rows: NeedRow[] = [
     why: 'Donner d’autres voies pour exprimer besoins, envies, présence.',
   },
   {
-    need: 'Frais de déplacement et de logement',
-    why: 'Rendre possibles les soins spécialisés loin du domicile.',
+    need: 'Frais de déplacement',
+    why: 'Rendre possibles les soins spécialisés loin du domicile et les allers-retours du quotidien.',
   },
 ]
 
@@ -34,20 +38,22 @@ export function WhyHelpSection() {
   return (
     <section
       id="pourquoi"
-      className="bg-linear-to-b from-ivory via-paper to-cream px-4 py-16 sm:px-6 sm:py-20"
+      className="bg-linear-to-b from-ivory via-mint/50 to-mist px-4 py-16 sm:px-6 sm:py-20"
     >
       <div className="mx-auto max-w-5xl">
         <div className="mb-10 grid items-center gap-8 md:grid-cols-2">
           <div className="text-center md:text-left">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-leaf">
               Concret
             </p>
             <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">
               Pourquoi aider ?
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-muted md:mx-0">
-              Les dons ne remplacent pas l’amour — ils l’épaulent. Voici où va
-              l’énergie, le temps et l’argent que la famille investit déjà.
+              Les dons à l’association ne remplacent pas l’amour — ils l’épaulent.
+              Voici les besoins que l’association aide à financer pour Kaïron
+              (la kiné, l’orthophonie et la psychomotricité sont prises en charge
+              par la Sécurité sociale).
             </p>
           </div>
           <div className="overflow-hidden rounded-xl bg-paper">
@@ -78,7 +84,7 @@ export function WhyHelpSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.12, duration: 0.5 }}
-          className="mx-auto mt-10 max-w-3xl rounded-xl border border-blue/12 bg-blue-soft/50 px-6 py-5 text-center font-display text-xl italic leading-snug text-ink sm:text-2xl"
+          className="mx-auto mt-10 max-w-3xl rounded-xl border border-leaf/25 bg-mint/90 px-6 py-5 text-center font-display text-xl italic leading-snug text-ink sm:text-2xl"
         >
           Pour beaucoup d’enfants, s’asseoir, manger ou se déplacer sont des
           étapes naturelles. Pour Kaïron, ce sont des montagnes. Votre aide peut

@@ -11,16 +11,16 @@ interface SoftButtonProps {
 }
 
 const baseClass =
-  'inline-flex items-center justify-center rounded-lg px-7 py-3.5 text-[0.95rem] font-semibold tracking-wide transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue'
+  'inline-flex items-center justify-center rounded-lg px-7 py-3.5 text-[0.95rem] font-semibold tracking-wide transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf'
 
 const variants: Record<NonNullable<SoftButtonProps['variant']>, string> = {
   primary:
-    'bg-gradient-to-br from-blue to-blue-deep text-paper shadow-[0_14px_32px_rgba(47,111,163,0.22)] hover:from-blue-deep hover:to-blue-night hover:shadow-[0_18px_40px_rgba(47,111,163,0.28)]',
+    'bg-gradient-to-br from-leaf to-forest text-paper shadow-[0_14px_32px_rgba(15,61,38,0.28)] hover:from-moss hover:to-forest hover:shadow-[0_18px_40px_rgba(15,61,38,0.35)]',
   secondary:
-    'border border-linen bg-paper text-ink hover:border-blue/35 hover:bg-blue-soft/60 hover:text-blue',
-  ghost: 'text-muted hover:bg-cream hover:text-ink',
+    'border border-sage/50 bg-paper text-ink hover:border-leaf/55 hover:bg-mint/90 hover:text-forest',
+  ghost: 'text-muted hover:bg-mist hover:text-forest',
   contrast:
-    'border border-paper/70 bg-paper text-blue shadow-lg hover:bg-apricot/50 hover:text-ink',
+    'border border-paper/80 bg-paper text-forest shadow-lg hover:bg-apricot/55 hover:text-ink',
 }
 
 export function SoftButton({

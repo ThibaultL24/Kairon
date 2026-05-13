@@ -51,7 +51,7 @@ const paragraphs = [
   "Des gestes simples pour certains. Des montagnes pour nous.",
   "Nous mettons tout en œuvre pour l'aider, allant jusqu'à partir en Espagne pour des stages de rééducation intensive. Et à chaque fois, il nous surprend.",
   "Kaïron a la chance immense d'être entouré d'une famille présente, soudée, qui se bat avec nous chaque jour. Toujours là pour nous soutenir, nous aider, nous porter quand c'est trop lourd. Toujours là pour nous accompagner dans ces projets, souvent coûteux. Leur amour et leur engagement nous permettent d'avancer, même dans les moments les plus difficiles. Nous ne les remercierons jamais assez pour tout ce qu'ils font pour Kaïron et pour nous.",
-  "Il a aussi une petite sœur, sa deuxième plus grande fan après maman. Du haut de son jeune âge, elle l'encourage, l'applaudit, le pousse à donner le meilleur de lui-même. Elle est si fière de lui, elle lui dit bravo à chaque petite victoire.",
+  "Il a aussi une petite sœur, Louciana, sa deuxième plus grande fan après maman. Du haut de son jeune âge, elle l'encourage, l'applaudit, le pousse à donner le meilleur de lui-même. Elle est si fière de lui, elle lui dit bravo à chaque petite victoire.",
   "Elle voit en lui ce que nous voyons : un enfant extraordinaire.",
   "Et leur lien, si pur, si fort, est sans doute l'une des plus belles forces dans cette aventure.",
   "Et au milieu de tout ça, il y a aussi une personne que nous n'oublierons jamais.",
@@ -73,7 +73,7 @@ export function TestimonySection() {
   return (
     <section
       id="temoignage"
-      className="bg-linear-to-b from-ivory to-cream px-4 py-16 sm:px-6 sm:py-24"
+      className="bg-linear-to-b from-mist via-mint-off to-ivory px-4 py-16 sm:px-6 sm:py-24"
     >
       <div className="mx-auto max-w-2xl">
         <motion.div
@@ -83,11 +83,11 @@ export function TestimonySection() {
           transition={{ duration: 0.6 }}
           className="mb-10 text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue">
-            Paroles de famille
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-leaf">
+            Paroles de maman
           </p>
           <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">
-            Notre témoignage
+            Témoignage de la maman
           </h2>
         </motion.div>
 
@@ -117,7 +117,7 @@ export function TestimonySection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-12 text-right font-display text-lg italic text-muted"
         >
-          — La famille de Kaïron
+          — La maman de Kaïron
         </motion.p>
       </div>
     </section>

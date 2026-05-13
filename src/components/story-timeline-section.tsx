@@ -14,7 +14,7 @@ const entries: TimelineEntry[] = [
   },
   {
     title: 'Trois semaines',
-    body: "Un malaise devant la pédiatre mène aux urgences. En pleine période Covid, la famille affronte seule l'hôpital, les examens, l'inconnu — et un trajet en hélicoptère pour Kaïron, trop lourd à dire à mots.",
+    body: "Un malaise devant la pédiatre mène aux urgences. En pleine période Covid, la famille affronte seule l'hôpital, les examens, l'inconnu. Puis vient l'urgence : Kaïron doit être transféré en hélicoptère vers un centre spécialisé — un moment si brutal pour des jeunes parents qu'il dépasse ce qu'on peut exprimer avec des mots.",
   },
   {
     title: 'Les premiers mois',
@@ -26,7 +26,7 @@ const entries: TimelineEntry[] = [
   },
   {
     title: "Aujourd'hui",
-    body: "Kiné, orthophonie, psychomotricité, stages intensifs à l'étranger, matériel adapté, présence d'un papa, d'une maman, d'une mamie, d'une petite sœur fière de chaque « bravo ». Kaïron avance, un jour après l'autre.",
+    body: "Stages intensifs à l'étranger (notamment en Espagne), matériel adapté, séances spécialisées, et la présence du papa, de la maman, de la mamie, et de Louciana — sa petite sœur — qui applaudit chaque petit pas et célèbre chaque victoire. Kaïron avance, un jour après l'autre.",
   },
 ]
 
@@ -34,7 +34,7 @@ export function StoryTimelineSection() {
   return (
     <section
       id="histoire"
-      className="bg-linear-to-b from-paper to-ivory px-4 py-16 sm:px-6 sm:py-20"
+      className="bg-linear-to-b from-mist via-paper/80 to-ivory px-4 py-16 sm:px-6 sm:py-20"
     >
       <div className="mx-auto max-w-6xl">
         <div className="grid items-start gap-10 md:grid-cols-2">
@@ -42,7 +42,7 @@ export function StoryTimelineSection() {
           {/* Colonne gauche : titre + timeline */}
           <div>
             <div className="mb-8 text-center md:text-left">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-leaf">
                 Parcours
               </p>
               <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">

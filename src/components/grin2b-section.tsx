@@ -6,7 +6,7 @@ export function Grin2bSection() {
   return (
     <section
       id="comprendre"
-      className="border-t border-linen bg-linear-to-r from-ivory via-cream/80 to-ivory px-4 py-16 sm:px-6 sm:py-20"
+      className="border-t border-sage/30 bg-linear-to-r from-mist via-ivory to-mint-off px-4 py-16 sm:px-6 sm:py-20"
     >
       <div className="mx-auto max-w-5xl">
         <motion.div
@@ -14,7 +14,7 @@ export function Grin2bSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="rounded-2xl border border-linen bg-paper p-8 shadow-sm sm:p-10"
+          className="rounded-2xl border border-sage/40 bg-paper p-8 shadow-sm sm:p-10"
         >
           <div className="grid items-center gap-8 md:grid-cols-2">
             <div className="md:order-2">

@@ -1,6 +1,7 @@
 // src/App.tsx
 import { AboutKaironSection } from './components/about-kairon-section'
 import { DonateCtaSection } from './components/donate-cta-section'
+import { EventsSection } from './components/events-section'
 import { GallerySection } from './components/gallery-section'
 import { GoalSection } from './components/goal-section'
 import { Grin2bSection } from './components/grin2b-section'
@@ -25,43 +26,82 @@ export default function App() {
       <SiteHeader />
       <main>
         <HeroSection />
-        <SectionWaveDivider bgClass="bg-ivory" waveClass="text-blue" />
+        <SectionWaveDivider
+          bgClass="bg-ivory"
+          waveClass="text-leaf"
+          fillOpacity={0.22}
+        />
 
         <AboutKaironSection />
-        <SectionWaveDivider bgClass="bg-ivory" waveClass="text-orange" />
+        <SectionWaveDivider
+          bgClass="bg-ivory"
+          waveClass="text-forest"
+          fillOpacity={0.18}
+        />
 
         <StoryTimelineSection />
-        <SectionWaveDivider bgClass="bg-ivory" waveClass="text-blue" />
+        <SectionWaveDivider
+          bgClass="bg-ivory"
+          waveClass="text-leaf"
+          fillOpacity={0.2}
+        />
 
         <Grin2bSection />
         <SectionWaveDivider
-          bgClass="bg-linear-to-b from-ivory via-paper/35 to-cream/50"
-          waveClass="text-blue"
+          bgClass="bg-linear-to-b from-ivory via-mist/80 to-mint/90"
+          waveClass="text-moss"
+          fillOpacity={0.2}
         />
 
         <WhyHelpSection />
-        <SectionWaveDivider bgClass="bg-cream" waveClass="text-blue" />
+        <SectionWaveDivider
+          bgClass="bg-cream"
+          waveClass="text-leaf"
+          fillOpacity={0.22}
+        />
 
         <GoalSection />
-        <SectionWaveDivider bgClass="bg-ivory" waveClass="text-orange" />
+        <SectionWaveDivider
+          bgClass="bg-ivory"
+          waveClass="text-forest"
+          fillOpacity={0.16}
+        />
+
+        <EventsSection />
+        <SectionWaveDivider
+          bgClass="bg-mist"
+          waveClass="text-orange"
+          fillOpacity={0.2}
+        />
 
         <DonateCtaSection />
-        {/* Bleu uni (même famille que le bas du bloc don) + onde ivory : pas de dégradé grisâtre */}
         <SectionWaveDivider
-          bgClass="bg-blue"
-          waveClass="text-ivory"
+          bgClass="bg-forest"
+          waveClass="text-mint-off"
           fillOpacity={1}
           heightClass="h-16 sm:h-18"
         />
 
         <TestimonySection />
-        <SectionWaveDivider bgClass="bg-cream" waveClass="text-blue" />
+        <SectionWaveDivider
+          bgClass="bg-cream"
+          waveClass="text-leaf"
+          fillOpacity={0.22}
+        />
 
         <GallerySection />
-        <SectionWaveDivider bgClass="bg-ivory" waveClass="text-orange" />
+        <SectionWaveDivider
+          bgClass="bg-ivory"
+          waveClass="text-moss"
+          fillOpacity={0.2}
+        />
 
         <ShareSection />
-        <SectionWaveDivider bgClass="bg-paper" waveClass="text-blue" />
+        <SectionWaveDivider
+          bgClass="bg-paper"
+          waveClass="text-leaf"
+          fillOpacity={0.18}
+        />
       </main>
       <SiteFooter />
     </div>

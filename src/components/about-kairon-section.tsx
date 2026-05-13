@@ -1,12 +1,13 @@
 // src/components/about-kairon-section.tsx
 import { motion } from 'framer-motion'
+import { associationHelloAssoUrl } from '../config/site-config'
 import { SectionPhoto } from './section-photo'
 
 export function AboutKaironSection() {
   return (
     <section
       id="qui"
-      className="bg-linear-to-b from-cream to-ivory px-4 py-16 sm:px-6 sm:py-20"
+      className="bg-linear-to-b from-mist/80 to-cream px-4 py-16 sm:px-6 sm:py-20"
     >
       <div className="mx-auto max-w-5xl">
         <motion.div
@@ -14,7 +15,7 @@ export function AboutKaironSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="rounded-2xl border border-linen bg-paper p-8 shadow-sm sm:p-10"
+          className="rounded-2xl border border-sage/40 bg-paper p-8 shadow-sm sm:p-10"
         >
           <div className="grid items-center gap-8 md:grid-cols-2">
             <div className="overflow-hidden">
@@ -41,6 +42,22 @@ export function AboutKaironSection() {
                   grande victoire
                 </span>
                 .
+              </p>
+              <p className="mt-5 text-sm leading-relaxed text-muted">
+                L’association{' '}
+                <a
+                  href={associationHelloAssoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-leaf underline decoration-leaf/40 underline-offset-2 hover:text-forest"
+                >
+                  « Un souffle d’espoir pour Kaïron » sur HelloAsso
+                </a>{' '}
+                porte les actions et la transparence des fonds.
+              </p>
+              <p className="mt-4 text-sm italic leading-relaxed text-muted">
+                Une photo plus récente de la famille (avec Louciana) remplacera
+                bientôt les visuels dès notre shooting photo.
               </p>
             </div>
           </div>

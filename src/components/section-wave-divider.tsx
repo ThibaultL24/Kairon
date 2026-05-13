@@ -6,7 +6,7 @@ const WAVE_PATH =
 interface SectionWaveDividerProps {
   /** Fond de la bandelette (souvent la fin de la section précédente) */
   bgClass: string
-  /** Couleur de l’onde via `currentColor` (ex. text-blue) */
+  /** Couleur de l’onde via `currentColor` (ex. text-leaf) */
   waveClass: string
   /** Opacité du remplissage de l’onde (0–1) */
   fillOpacity?: number

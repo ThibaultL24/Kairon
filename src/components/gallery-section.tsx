@@ -20,7 +20,7 @@ export function GallerySection() {
   return (
     <section
       id="galerie"
-      className="bg-linear-to-b from-cream to-ivory px-4 py-16 sm:px-6 sm:py-20"
+      className="bg-linear-to-b from-mint via-mist to-ivory px-4 py-16 sm:px-6 sm:py-20"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 text-center">

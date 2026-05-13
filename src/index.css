@@ -1,28 +1,37 @@
 @import 'tailwindcss';
 
-/* Bleu = confiance / action. Orange chaud = vie, espoir (accent ~10%). Neutres = respiration. */
+/* Vert dominant (palette type barres : forêt → feuille → mousse → sauge pâle → quasi-blanc). Bleu conservé en secondaire ; orange = accent chaleur. */
 @theme {
   --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
   --font-body: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
 
-  --color-ivory: #fffdf8;
-  --color-cream: #f7f1e8;
-  --color-paper: #ffffff;
-  --color-linen: #e8ded0;
+  --color-forest: #0d3d26;
+  --color-leaf: #1f6d44;
+  --color-moss: #3d7f5a;
+  --color-pale-sage: #9dcea8;
+  --color-mint-off: #f0faf3;
 
-  --color-ink: #24313a;
-  --color-muted: #6e767c;
+  --color-ivory: #f2faf4;
+  --color-cream: #dff0e4;
+  --color-paper: #ffffff;
+  --color-linen: #c5dcc9;
+
+  --color-ink: #1a2e24;
+  --color-muted: #4a6356;
 
   --color-blue: #2f6fa3;
   --color-blue-deep: #24557d;
   --color-blue-night: #1d4566;
   --color-blue-soft: #dbe9f4;
 
-  --color-orange: #d88a4b;
-  --color-apricot: #f3d6bc;
-  --color-amber-soft: #e9bc74;
+  --color-orange: #e8732a;
+  --color-apricot: #fad4b0;
+  --color-amber-soft: #f0a032;
 
-  --color-sage: #a8b79f;
+  --color-sage: #5a9370;
+  --color-sage-deep: #13402a;
+  --color-mint: #c0e4ca;
+  --color-mist: #daf0e1;
 }
 
 @layer base {
@@ -32,21 +41,29 @@
 
   body {
     @apply font-body text-muted antialiased;
+    /* Dégradé global accentué : quasi-blanc → verts saturés (bas de page plus « feuille »). */
     background:
       radial-gradient(
-        circle at top left,
-        rgba(243, 214, 188, 0.45),
-        transparent 30rem
+        ellipse 130% 85% at 50% 100%,
+        rgba(31, 109, 68, 0.14),
+        transparent 52%
       ),
       radial-gradient(
-        circle at top right,
-        rgba(219, 233, 244, 0.65),
-        transparent 34rem
+        circle at 0% 0%,
+        rgba(157, 206, 168, 0.35),
+        transparent 42%
       ),
-      linear-gradient(180deg, #fffdf8 0%, #f7f1e8 100%);
+      linear-gradient(
+        180deg,
+        #fbfffc 0%,
+        #ecf8f1 18%,
+        #d4f0dc 42%,
+        #b8e4c5 68%,
+        #9bd9ae 100%
+      );
   }
 
   ::selection {
-    @apply bg-apricot/80 text-ink;
+    @apply bg-pale-sage/90 text-forest;
   }
 }

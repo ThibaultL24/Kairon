@@ -59,7 +59,7 @@ export function ShareSection() {
   return (
     <section
       id="partager"
-      className="border-t border-linen bg-paper px-4 py-16 sm:px-6 sm:py-20"
+      className="border-t border-sage/20 bg-mist/60 px-4 py-16 sm:px-6 sm:py-20"
     >
       <div className="mx-auto max-w-3xl text-center">
         <motion.div
@@ -84,7 +84,7 @@ export function ShareSection() {
                 key={action.label}
                 type="button"
                 onClick={() => share(action.kind)}
-                className="rounded-lg border border-linen bg-ivory px-4 py-2.5 text-sm font-medium text-ink transition hover:border-blue/30 hover:bg-blue-soft/60 hover:text-blue"
+                className="rounded-lg border border-sage/40 bg-ivory px-4 py-2.5 text-sm font-medium text-ink transition hover:border-leaf/45 hover:bg-mint/80 hover:text-forest"
               >
                 {action.label}
               </button>
@@ -92,7 +92,7 @@ export function ShareSection() {
             <button
               type="button"
               onClick={() => void copyLink()}
-              className="rounded-lg border border-blue-deep/40 bg-gradient-to-br from-blue to-blue-deep px-4 py-2.5 text-sm font-semibold text-paper transition hover:from-blue-deep hover:to-blue-night"
+              className="rounded-full bg-linear-to-r from-leaf to-forest px-4 py-2.5 text-sm font-semibold text-paper transition hover:from-moss hover:to-leaf"
             >
               {copied ? 'Lien copié' : 'Copier le lien'}
             </button>
