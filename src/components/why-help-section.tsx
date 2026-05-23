@@ -10,7 +10,7 @@ interface NeedRow {
 const rows: NeedRow[] = [
   {
     need: 'Stages de rééducation spécialisée (Barcelone, Pologne…)',
-    why: "Seuls certains centres proposent une prise en charge ciblée GRIN2B avec des résultats concrets pour Kaïron — l'association aide à financer ces séjours.",
+    why: "Seuls certains centres proposent une prise en charge ciblée GRIN2B avec des résultats concrets pour Kaïron — l'association aide à financer ces séjours. Chaque stage coûte 4 400 €, hors hébergement et frais annexes.",
   },
   {
     need: 'Séances Snoezelen',
@@ -51,9 +51,7 @@ export function WhyHelpSection() {
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-muted md:mx-0">
               Les dons à l’association ne remplacent pas l’amour — ils l’épaulent.
-              Voici les besoins que l’association aide à financer pour Kaïron
-              (la kiné, l’orthophonie et la psychomotricité sont prises en charge
-              par la Sécurité sociale).
+              Voici les besoins que l’association aide à financer pour Kaïron.
             </p>
           </div>
           <div className="overflow-hidden rounded-xl bg-paper">

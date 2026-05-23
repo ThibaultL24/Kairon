@@ -21,14 +21,19 @@ export interface UpcomingEvent {
   title: string
   dateLabel: string
   detail: string
+  posterSrc?: string
+  posterAlt?: string
 }
 
 export const upcomingEvents: UpcomingEvent[] = [
   {
     title: 'Foire du printemps',
-    dateLabel: 'Printemps 2026 — date à confirmer',
+    dateLabel: '7 juin 2026 · Althen-des-Paluds',
     detail:
-      'Stand de l’association : la date exacte sera annoncée ici dès qu’elle sera fixée.',
+      'L’association « Un souffle d’espoir pour Kaïron » sera présente sur un stand — venez nous rencontrer !',
+    posterSrc: '/foire-althen-2026.png',
+    posterAlt:
+      'Affiche : l’association sera présente à la foire du printemps à Althen-des-Paluds le 7 juin 2026',
   },
 ]
 
