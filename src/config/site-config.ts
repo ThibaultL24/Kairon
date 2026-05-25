@@ -7,6 +7,11 @@ function parseEuros(value: string | undefined, fallback: number): number {
   return Number.isFinite(n) ? n : fallback
 }
 
+/** Logo Kaïron (export PNG depuis `/public/LOGO KAÏRON.pdf`). */
+export const kaironLogoSrc = '/logo-kairon.png'
+
+export const kaironLogoAlt = 'Logo Kaïron'
+
 /** Page vitrine de l’association sur HelloAsso (adhésions, infos, dons). */
 export const associationHelloAssoUrl =
   import.meta.env.VITE_ASSOCIATION_HELLOASSO_URL ??

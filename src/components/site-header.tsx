@@ -1,6 +1,10 @@
 // src/components/site-header.tsx
 import { motion } from 'framer-motion'
-import { associationHelloAssoUrl } from '../config/site-config'
+import {
+  associationHelloAssoUrl,
+  kaironLogoAlt,
+  kaironLogoSrc,
+} from '../config/site-config'
 
 const navItems = [
   { id: 'qui', label: 'Qui est Kaïron ?' },
@@ -40,9 +44,16 @@ export function SiteHeader() {
           target="_blank"
           rel="noopener noreferrer"
           title="Un souffle d’espoir pour Kaïron — page HelloAsso"
-          className="shrink-0 whitespace-nowrap text-xs font-semibold text-leaf underline decoration-transparent underline-offset-2 transition hover:text-forest hover:decoration-leaf/60 sm:text-sm"
+          className="shrink-0 rounded-md transition hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
         >
-          HelloAsso ↗
+          <img
+            src={kaironLogoSrc}
+            alt={kaironLogoAlt}
+            className="h-8 w-8 object-contain sm:h-9 sm:w-9"
+            width={36}
+            height={36}
+            decoding="async"
+          />
         </a>
         <span
           aria-hidden

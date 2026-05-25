@@ -2,7 +2,12 @@
 import { motion } from 'framer-motion'
 import { SectionPhoto } from './section-photo'
 import { SoftButton } from './soft-button'
-import { associationHelloAssoUrl, donationUrl } from '../config/site-config'
+import {
+  associationHelloAssoUrl,
+  donationUrl,
+  kaironLogoAlt,
+  kaironLogoSrc,
+} from '../config/site-config'
 
 export function HeroSection() {
   return (
@@ -33,10 +38,17 @@ export function HeroSection() {
             rel="noopener noreferrer"
             className="mb-3 inline-flex items-center gap-2 rounded-full border border-sage/40 bg-mint/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sage-deep transition hover:border-leaf/50 hover:bg-mint"
           >
-            Un souffle d’espoir pour Kaïron
-            <span aria-hidden className="font-body text-[0.7rem] font-normal normal-case tracking-normal opacity-75">
-              HelloAsso ↗
+            <span className="max-w-[12rem] text-left leading-tight sm:max-w-none">
+              Un souffle d’espoir pour Kaïron
             </span>
+            <img
+              src={kaironLogoSrc}
+              alt={kaironLogoAlt}
+              className="h-8 w-8 shrink-0 object-contain sm:h-9 sm:w-9"
+              width={36}
+              height={36}
+              decoding="async"
+            />
           </a>
           <h1 className="font-display text-4xl leading-[1.08] text-ink sm:text-5xl lg:text-[3.25rem]">
             Kaïron avance à son rythme.
