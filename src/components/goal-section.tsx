@@ -1,10 +1,7 @@
 // src/components/goal-section.tsx
 import { motion } from 'framer-motion'
+import { useSiteData } from '../hooks/use-admin'
 import { SectionPhoto } from './section-photo'
-import {
-  collectedEuros,
-  goalEuros,
-} from '../config/site-config'
 
 function formatEuros(n: number): string {
   return new Intl.NumberFormat('fr-FR', {
@@ -15,9 +12,10 @@ function formatEuros(n: number): string {
 }
 
 export function GoalSection() {
+  const { goal } = useSiteData()
   const pct = Math.min(
     100,
-    goalEuros > 0 ? Math.round((collectedEuros / goalEuros) * 100) : 0,
+    goal.goalEuros > 0 ? Math.round((goal.collectedEuros / goal.goalEuros) * 100) : 0,
   )
 
   return (
@@ -35,38 +33,28 @@ export function GoalSection() {
           <div className="grid items-center gap-8 md:grid-cols-2">
             <div className="md:order-2 text-center md:text-left">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-leaf">
-                Transparence
+                {goal.eyebrow}
               </p>
               <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">
-                Objectif de la cagnotte
+                {goal.title}
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-muted sm:text-[1.05rem]">
-                Les dons à l’association « Un souffle d’espoir pour Kaïron »
-                financent environ{' '}
-                <span className="font-semibold text-ink">
-                  deux stages intensifs par an
-                </span>
-                , du matériel adapté et les frais non remboursés liés au parcours
-                de Kaïron. Les montants affichés pourront être affinés avec
-                l’association : mieux vaut une estimation honnête qu’un appel
-                flou.
+                {goal.intro}
               </p>
             </div>
             <div className="overflow-hidden rounded-xl bg-paper md:order-1">
-              <SectionPhoto n={8} className="aspect-video w-full object-contain" />
+              <SectionPhoto n={goal.photoNumber} className="aspect-video w-full object-contain" />
             </div>
           </div>
 
           <div className="mt-10 rounded-xl border border-sage/35 bg-paper p-6 text-left shadow-md shadow-forest/10">
             <div className="flex flex-wrap items-end justify-between gap-2">
               <div>
-                <p className="text-xs uppercase tracking-wide text-muted">
-                  Suivi indicatif
-                </p>
+                <p className="text-xs uppercase tracking-wide text-muted">Suivi indicatif</p>
                 <p className="mt-1 font-display text-2xl text-ink">
-                  <span className="text-amber-soft">{formatEuros(collectedEuros)}</span>{' '}
+                  <span className="text-amber-soft">{formatEuros(goal.collectedEuros)}</span>{' '}
                   <span className="text-base font-body text-muted">
-                    collectés sur {formatEuros(goalEuros)}
+                    collectés sur {formatEuros(goal.goalEuros)}
                   </span>
                 </p>
               </div>
@@ -92,10 +80,7 @@ export function GoalSection() {
             </div>
           </div>
 
-          <p className="mt-8 text-lg leading-relaxed text-muted">
-            Chaque don, même modeste, contribue aux soins, au matériel et aux
-            stages. 5 €, 10 €, 20 € ou plus : chaque geste compte.
-          </p>
+          <p className="mt-8 text-lg leading-relaxed text-muted">{goal.footer}</p>
         </motion.div>
       </div>
     </section>

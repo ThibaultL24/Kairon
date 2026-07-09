@@ -1,21 +1,29 @@
 // src/components/gallery-section.tsx
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-
-const TOTAL = 33
-
-const photos = Array.from({ length: TOTAL }, (_, i) => i + 1)
+import { useSiteData } from '../hooks/use-admin'
 
 export function GallerySection() {
+  const { gallery } = useSiteData()
+  const photos = gallery.photoNumbers
+  const total = photos.length
   const [lightbox, setLightbox] = useState<number | null>(null)
 
   function prev() {
-    setLightbox((n) => (n === null ? null : n === 1 ? TOTAL : n - 1))
+    setLightbox((index) => {
+      if (index === null) return null
+      return index === 0 ? total - 1 : index - 1
+    })
   }
 
   function next() {
-    setLightbox((n) => (n === null ? null : n === TOTAL ? 1 : n + 1))
+    setLightbox((index) => {
+      if (index === null) return null
+      return index === total - 1 ? 0 : index + 1
+    })
   }
+
+  if (total === 0) return null
 
   return (
     <section
@@ -25,26 +33,24 @@ export function GallerySection() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange">
-            Souvenirs
+            {gallery.eyebrow}
           </p>
           <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">
-            Galerie
+            {gallery.title}
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-muted">
-            Quelques instants de la vie de Kaïron, partagés avec amour.
-          </p>
+          <p className="mx-auto mt-3 max-w-xl text-muted">{gallery.intro}</p>
         </div>
 
         <div className="columns-2 gap-3 sm:columns-3 lg:columns-4">
           {photos.map((n, index) => (
             <motion.button
-              key={n}
+              key={`${index}-${n}`}
               type="button"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.35, delay: (index % 8) * 0.04 }}
-              onClick={() => setLightbox(n)}
+              onClick={() => setLightbox(index)}
               className="mb-3 block w-full overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue"
             >
               <img
@@ -59,9 +65,8 @@ export function GallerySection() {
         </div>
       </div>
 
-      {/* Lightbox */}
       <AnimatePresence>
-        {lightbox !== null && (
+        {lightbox !== null ? (
           <motion.div
             key="lightbox"
             initial={{ opacity: 0 }}
@@ -80,34 +85,37 @@ export function GallerySection() {
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={`/kairon${lightbox}.jpeg`}
-                alt={`Photo de Kaïron n°${lightbox}`}
+                src={`/kairon${photos[lightbox]}.jpeg`}
+                alt={`Photo de Kaïron n°${photos[lightbox]}`}
                 className="max-h-[82svh] max-w-full rounded-xl object-contain shadow-2xl"
               />
               <p className="mt-2 text-center text-sm text-paper/60">
-                {lightbox} / {TOTAL}
+                {lightbox + 1} / {total}
               </p>
             </motion.div>
 
-            {/* Prev */}
             <button
               type="button"
-              onClick={(e) => { e.stopPropagation(); prev() }}
+              onClick={(e) => {
+                e.stopPropagation()
+                prev()
+              }}
               aria-label="Photo précédente"
               className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-paper/15 p-3 text-paper hover:bg-paper/30"
             >
               ‹
             </button>
-            {/* Next */}
             <button
               type="button"
-              onClick={(e) => { e.stopPropagation(); next() }}
+              onClick={(e) => {
+                e.stopPropagation()
+                next()
+              }}
               aria-label="Photo suivante"
               className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-paper/15 p-3 text-paper hover:bg-paper/30"
             >
               ›
             </button>
-            {/* Close */}
             <button
               type="button"
               onClick={() => setLightbox(null)}
@@ -117,7 +125,7 @@ export function GallerySection() {
               ✕
             </button>
           </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
     </section>
   )

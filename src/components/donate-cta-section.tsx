@@ -1,10 +1,15 @@
 // src/components/donate-cta-section.tsx
 import { motion } from 'framer-motion'
+import { useSiteData } from '../hooks/use-admin'
+import { resolveAssociationUrl, resolveDonationUrl } from '../lib/resolve-urls'
 import { SectionPhoto } from './section-photo'
-import { associationHelloAssoUrl, donationUrl } from '../config/site-config'
 import { SoftButton } from './soft-button'
 
 export function DonateCtaSection() {
+  const { donate, urls } = useSiteData()
+  const associationHelloAssoUrl = resolveAssociationUrl(urls.associationHelloAsso)
+  const donationUrl = resolveDonationUrl(urls.donation)
+
   return (
     <section
       id="don"
@@ -27,27 +32,18 @@ export function DonateCtaSection() {
           <div className="grid items-center gap-8 md:grid-cols-2">
             <div className="text-center md:text-left">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-apricot">
-                Agir
+                {donate.eyebrow}
               </p>
               <h2 className="mt-3 font-display text-3xl text-paper sm:text-4xl">
-                Faire un don
+                {donate.title}
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-paper/90">
-                Les dons passent par l’association « Un souffle d’espoir pour
-                Kaïron » sur HelloAsso : ils financent directement les projets de
-                Kaïron (stages spécialisés, matériel, déplacements) — pas un
-                cadeau à la famille, un levier concret pour son parcours de soin.
-              </p>
+              <p className="mt-5 text-lg leading-relaxed text-paper/90">{donate.body}</p>
               <div className="mt-8 flex justify-center md:justify-start">
                 <SoftButton href={donationUrl} variant="contrast">
                   Je fais un don
                 </SoftButton>
               </div>
-              <p className="mt-6 text-sm leading-relaxed text-paper/75">
-                Lien vers le formulaire HelloAsso de l’association (même cagnotte
-                que sur les événements). Les fonds servent aux besoins de Kaïron
-                selon les priorités validées par l’association.
-              </p>
+              <p className="mt-6 text-sm leading-relaxed text-paper/75">{donate.footer}</p>
               <p className="mt-4">
                 <a
                   href={associationHelloAssoUrl}
@@ -61,10 +57,7 @@ export function DonateCtaSection() {
               </p>
             </div>
             <div className="mx-auto w-full max-w-lg md:order-2">
-              <SectionPhoto
-                n={15}
-                className="max-h-104 w-full object-contain"
-              />
+              <SectionPhoto n={donate.photoNumber} className="max-h-104 w-full object-contain" />
             </div>
           </div>
         </motion.div>

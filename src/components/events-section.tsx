@@ -1,8 +1,12 @@
 // src/components/events-section.tsx
 import { motion } from 'framer-motion'
-import { associationHelloAssoUrl, upcomingEvents } from '../config/site-config'
+import { useSiteData } from '../hooks/use-admin'
+import { resolveAssociationUrl } from '../lib/resolve-urls'
 
 export function EventsSection() {
+  const { events, urls } = useSiteData()
+  const associationHelloAssoUrl = resolveAssociationUrl(urls.associationHelloAsso)
+
   return (
     <section
       id="evenements"
@@ -17,15 +21,13 @@ export function EventsSection() {
           className="text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-deep">
-            Association
+            {events.eyebrow}
           </p>
           <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">
-            Projets & événements à venir
+            {events.title}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-            Rencontrez-nous sur nos actions : les fonds collectés par l’association
-            « Un souffle d’espoir pour Kaïron » financent directement les besoins de
-            Kaïron (stages, matériel, déplacements).
+            {events.intro}
           </p>
           <p className="mx-auto mt-5 max-w-2xl">
             <a
@@ -43,9 +45,14 @@ export function EventsSection() {
         </motion.div>
 
         <ul className="mt-10 grid gap-6">
-          {upcomingEvents.map((event, index) => (
+          {events.items.length === 0 ? (
+            <li className="rounded-xl border border-dashed border-sage/35 bg-paper/70 p-8 text-center text-muted">
+              Aucun événement annoncé pour le moment.
+            </li>
+          ) : null}
+          {events.items.map((event, index) => (
             <motion.li
-              key={event.title}
+              key={event.id}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
@@ -66,9 +73,7 @@ export function EventsSection() {
                   {event.dateLabel}
                 </p>
                 <h3 className="mt-2 font-display text-xl text-ink">{event.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {event.detail}
-                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{event.detail}</p>
               </div>
             </motion.li>
           ))}

@@ -1,15 +1,16 @@
 // src/components/hero-section.tsx
 import { motion } from 'framer-motion'
+import { useSiteData } from '../hooks/use-admin'
+import { kaironLogoAlt, kaironLogoSrc } from '../config/site-config'
+import { resolveAssociationUrl, resolveDonationUrl } from '../lib/resolve-urls'
 import { SectionPhoto } from './section-photo'
 import { SoftButton } from './soft-button'
-import {
-  associationHelloAssoUrl,
-  donationUrl,
-  kaironLogoAlt,
-  kaironLogoSrc,
-} from '../config/site-config'
 
 export function HeroSection() {
+  const { hero, urls } = useSiteData()
+  const associationHelloAssoUrl = resolveAssociationUrl(urls.associationHelloAsso)
+  const donationUrl = resolveDonationUrl(urls.donation)
+
   return (
     <section
       id="accueil"
@@ -39,7 +40,7 @@ export function HeroSection() {
             className="mb-3 inline-flex items-center gap-2 rounded-full border border-sage/40 bg-mint/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sage-deep transition hover:border-leaf/50 hover:bg-mint"
           >
             <span className="max-w-[12rem] text-left leading-tight sm:max-w-none">
-              Un souffle d’espoir pour Kaïron
+              {hero.associationBadge}
             </span>
             <img
               src={kaironLogoSrc}
@@ -51,20 +52,13 @@ export function HeroSection() {
             />
           </a>
           <h1 className="font-display text-4xl leading-[1.08] text-ink sm:text-5xl lg:text-[3.25rem]">
-            Kaïron avance à son rythme.
+            {hero.title}
             <span className="mt-2 block text-3xl text-orange sm:text-4xl">
-              Aidons-le à aller plus loin.
+              {hero.titleAccent}
             </span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-[1.05rem]">
-            Kaïron a trois ans et demi. Une mutation rare du gène{' '}
-            <span className="rounded-md border border-sage/50 bg-mint/90 px-1.5 py-0.5 font-semibold text-forest">
-              GRIN2B
-            </span>{' '}
-            bouleverse son développement, son alimentation, son sommeil et sa
-            motricité. L’association familiale collecte les dons pour financer
-            stages, matériel et frais non pris en charge — afin que chaque progrès
-            reste possible.
+            {hero.intro}
           </p>
           <p className="mt-4 max-w-xl text-sm text-muted">
             <a
@@ -74,11 +68,12 @@ export function HeroSection() {
               className="font-semibold text-leaf underline decoration-leaf/40 underline-offset-2 hover:text-forest"
             >
               Page HelloAsso de l’association
-            </a>{' '}
-            : actualités, adhésions et transparence.
+            </a>
+            {' — '}
+            {hero.helloAssoNote}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <SoftButton href={donationUrl}>Faire un don pour Kaïron</SoftButton>
+            <SoftButton href={donationUrl}>{hero.ctaPrimary}</SoftButton>
             <SoftButton
               variant="secondary"
               onClick={() =>
@@ -87,7 +82,7 @@ export function HeroSection() {
                 })
               }
             >
-              Découvrir son histoire
+              {hero.ctaSecondary}
             </SoftButton>
           </div>
         </motion.div>
@@ -102,7 +97,7 @@ export function HeroSection() {
           <div className="pointer-events-none absolute -inset-1 rounded-[1.75rem] bg-gradient-to-br from-orange/20 to-blue/12 blur-xl" />
           <div className="relative overflow-hidden rounded-[1.65rem] border-2 border-leaf/35 bg-paper shadow-lg shadow-forest/15 ring-1 ring-sage/30">
             <SectionPhoto
-              n={6}
+              n={hero.photoNumber}
               loading="eager"
               fetchPriority="high"
               className="aspect-[4/5] h-full w-full object-cover"

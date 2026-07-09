@@ -1,7 +1,7 @@
 // src/components/share-section.tsx
 import { useCallback, useState } from 'react'
 import { motion } from 'framer-motion'
-import { shareMessage } from '../config/site-config'
+import { useSiteData } from '../hooks/use-admin'
 
 function buildUrl(base: string, params: Record<string, string>): string {
   const u = new URL(base)
@@ -18,32 +18,30 @@ const shareActions = [
 ] as const
 
 export function ShareSection() {
+  const { share } = useSiteData()
   const [copied, setCopied] = useState(false)
   const pageUrl = typeof window !== 'undefined' ? window.location.href : ''
 
-  const share = useCallback(
+  const sharePage = useCallback(
     (kind: (typeof shareActions)[number]['kind']) => {
-      const text = `${shareMessage} ${pageUrl}`.trim()
+      const text = `${share.shareMessage} ${pageUrl}`.trim()
 
       const urls: Record<typeof kind, string> = {
-        facebook: buildUrl('https://www.facebook.com/sharer/sharer.php', {
-          u: pageUrl,
-        }),
+        facebook: buildUrl('https://www.facebook.com/sharer/sharer.php', { u: pageUrl }),
         whatsapp: `https://wa.me/?text=${encodeURIComponent(text)}`,
         x: buildUrl('https://twitter.com/intent/tweet', {
           url: pageUrl,
-          text: shareMessage,
+          text: share.shareMessage,
         }),
-        linkedin: buildUrl(
-          'https://www.linkedin.com/sharing/share-offsite/',
-          { url: pageUrl },
-        ),
+        linkedin: buildUrl('https://www.linkedin.com/sharing/share-offsite/', {
+          url: pageUrl,
+        }),
         sms: `sms:?body=${encodeURIComponent(text)}`,
       }
 
       window.open(urls[kind], '_blank', 'noopener,noreferrer')
     },
-    [pageUrl],
+    [pageUrl, share.shareMessage],
   )
 
   const copyLink = useCallback(async () => {
@@ -69,21 +67,18 @@ export function ShareSection() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange">
-            Solidarité
+            {share.eyebrow}
           </p>
           <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">
-            Partager
+            {share.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted">
-            Si vous ne pouvez pas donner, partager cette page est déjà une aide
-            précieuse.
-          </p>
+          <p className="mx-auto mt-4 max-w-xl text-muted">{share.intro}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-2.5">
             {shareActions.map((action) => (
               <button
                 key={action.label}
                 type="button"
-                onClick={() => share(action.kind)}
+                onClick={() => sharePage(action.kind)}
                 className="rounded-lg border border-sage/40 bg-ivory px-4 py-2.5 text-sm font-medium text-ink transition hover:border-leaf/45 hover:bg-mint/80 hover:text-forest"
               >
                 {action.label}

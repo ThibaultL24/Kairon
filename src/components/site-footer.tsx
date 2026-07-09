@@ -1,7 +1,10 @@
 // src/components/site-footer.tsx
-import { associationHelloAssoUrl } from '../config/site-config'
+import { useSiteData } from '../hooks/use-admin'
+import { resolveAssociationUrl } from '../lib/resolve-urls'
 
 export function SiteFooter() {
+  const { urls } = useSiteData()
+  const associationHelloAssoUrl = resolveAssociationUrl(urls.associationHelloAsso)
   return (
     <footer className="border-t border-sage/25 bg-linear-to-r from-mist via-ivory to-mint/50 px-4 py-10 sm:px-6">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 text-sm text-muted md:flex-row md:items-start md:justify-between">

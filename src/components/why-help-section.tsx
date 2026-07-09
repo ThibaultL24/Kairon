@@ -1,40 +1,11 @@
 // src/components/why-help-section.tsx
 import { motion } from 'framer-motion'
+import { useSiteData } from '../hooks/use-admin'
 import { SectionPhoto } from './section-photo'
 
-interface NeedRow {
-  need: string
-  why: string
-}
-
-const rows: NeedRow[] = [
-  {
-    need: 'Stages de rééducation spécialisée (Barcelone, Pologne…)',
-    why: "Seuls certains centres proposent une prise en charge ciblée GRIN2B avec des résultats concrets pour Kaïron — l'association aide à financer ces séjours. Chaque stage coûte 4 400 €, hors hébergement et frais annexes.",
-  },
-  {
-    need: 'Séances Snoezelen',
-    why: 'Un espace de calme et de découvertes sensorielles pour apaiser, rassurer et créer du lien.',
-  },
-  {
-    need: 'Matériel adapté du quotidien',
-    why: 'Chaussures adaptées et coques, bodys adaptés à la gastrostomie, équipements sur mesure : beaucoup de frais restent à la charge de la famille.',
-  },
-  {
-    need: 'Poussette médicalisée',
-    why: 'Faciliter les déplacements et le confort dans la durée.',
-  },
-  {
-    need: 'Outil de communication (tablette, contrôle du regard)',
-    why: 'Donner d’autres voies pour exprimer besoins, envies, présence.',
-  },
-  {
-    need: 'Frais de déplacement',
-    why: 'Rendre possibles les soins spécialisés loin du domicile et les allers-retours du quotidien.',
-  },
-]
-
 export function WhyHelpSection() {
+  const { whyHelp } = useSiteData()
+
   return (
     <section
       id="pourquoi"
@@ -44,25 +15,22 @@ export function WhyHelpSection() {
         <div className="mb-10 grid items-center gap-8 md:grid-cols-2">
           <div className="text-center md:text-left">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-leaf">
-              Concret
+              {whyHelp.eyebrow}
             </p>
             <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">
-              Pourquoi aider ?
+              {whyHelp.title}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-muted md:mx-0">
-              Les dons à l’association ne remplacent pas l’amour — ils l’épaulent.
-              Voici les besoins que l’association aide à financer pour Kaïron.
-            </p>
+            <p className="mx-auto mt-4 max-w-2xl text-muted md:mx-0">{whyHelp.intro}</p>
           </div>
           <div className="overflow-hidden rounded-xl bg-paper">
-            <SectionPhoto n={17} className="aspect-video w-full object-contain" />
+            <SectionPhoto n={whyHelp.photoNumber} className="aspect-video w-full object-contain" />
           </div>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {rows.map((row, index) => (
+          {whyHelp.rows.map((row, index) => (
             <motion.article
-              key={row.need}
+              key={row.id}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
@@ -70,9 +38,7 @@ export function WhyHelpSection() {
               className="flex flex-col rounded-xl border border-linen border-t-2 border-t-orange bg-paper p-6 text-left shadow-sm"
             >
               <h3 className="font-display text-lg text-ink">{row.need}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                {row.why}
-              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{row.why}</p>
             </motion.article>
           ))}
         </div>
@@ -84,9 +50,7 @@ export function WhyHelpSection() {
           transition={{ delay: 0.12, duration: 0.5 }}
           className="mx-auto mt-10 max-w-3xl rounded-xl border border-leaf/25 bg-mint/90 px-6 py-5 text-center font-display text-xl italic leading-snug text-ink sm:text-2xl"
         >
-          Pour beaucoup d’enfants, s’asseoir, manger ou se déplacer sont des
-          étapes naturelles. Pour Kaïron, ce sont des montagnes. Votre aide peut
-          l’aider à les gravir — sans spectacle, avec respect.
+          {whyHelp.closingQuote}
         </motion.p>
       </div>
     </section>

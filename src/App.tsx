@@ -1,109 +1,54 @@
 // src/App.tsx
-import { AboutKaironSection } from './components/about-kairon-section'
-import { DonateCtaSection } from './components/donate-cta-section'
-import { EventsSection } from './components/events-section'
-import { GallerySection } from './components/gallery-section'
-import { GoalSection } from './components/goal-section'
-import { Grin2bSection } from './components/grin2b-section'
-import { HeroSection } from './components/hero-section'
-import { SectionWaveDivider } from './components/section-wave-divider'
-import { ShareSection } from './components/share-section'
-import { SiteFooter } from './components/site-footer'
-import { SiteHeader } from './components/site-header'
-import { StoryTimelineSection } from './components/story-timeline-section'
-import { TestimonySection } from './components/testimony-section'
-import { WhyHelpSection } from './components/why-help-section'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { RequireAdmin } from './components/admin/require-admin'
+import { AdminAccueilPage } from './pages/admin/admin-accueil-page'
+import { AdminArticlesPage } from './pages/admin/admin-articles-page'
+import { AdminBesoinsPage } from './pages/admin/admin-besoins-page'
+import { AdminCagnottePage } from './pages/admin/admin-cagnotte-page'
+import { AdminComprendrePage } from './pages/admin/admin-comprendre-page'
+import { AdminEvenementsPage } from './pages/admin/admin-evenements-page'
+import { AdminGaleriePage } from './pages/admin/admin-galerie-page'
+import { AdminHistoirePage } from './pages/admin/admin-histoire-page'
+import { AdminIndexPage } from './pages/admin/admin-index-page'
+import { AdminLayout } from './pages/admin/admin-layout'
+import { AdminLoginPage } from './pages/admin/admin-login-page'
+import { AdminParametresPage } from './pages/admin/admin-parametres-page'
+import { AdminQuiPage } from './pages/admin/admin-qui-page'
+import { AdminSectionsPage } from './pages/admin/admin-sections-page'
+import { AdminTemoignagePage } from './pages/admin/admin-temoignage-page'
+import { SitePage } from './pages/site-page'
 
 export default function App() {
   return (
-    <div className="min-h-svh text-ink">
-      <a
-        href="#accueil"
-        className="fixed left-4 top-0 z-100 -translate-y-full rounded-full bg-paper px-4 py-2 text-sm font-medium text-ink shadow-md ring-1 ring-linen transition focus-visible:translate-y-4 focus-visible:outline-none"
-      >
-        Aller au contenu
-      </a>
-      <SiteHeader />
-      <main>
-        <HeroSection />
-        <SectionWaveDivider
-          bgClass="bg-ivory"
-          waveClass="text-leaf"
-          fillOpacity={0.22}
-        />
-
-        <AboutKaironSection />
-        <SectionWaveDivider
-          bgClass="bg-ivory"
-          waveClass="text-forest"
-          fillOpacity={0.18}
-        />
-
-        <StoryTimelineSection />
-        <SectionWaveDivider
-          bgClass="bg-ivory"
-          waveClass="text-leaf"
-          fillOpacity={0.2}
-        />
-
-        <Grin2bSection />
-        <SectionWaveDivider
-          bgClass="bg-linear-to-b from-ivory via-mist/80 to-mint/90"
-          waveClass="text-moss"
-          fillOpacity={0.2}
-        />
-
-        <WhyHelpSection />
-        <SectionWaveDivider
-          bgClass="bg-cream"
-          waveClass="text-leaf"
-          fillOpacity={0.22}
-        />
-
-        <GoalSection />
-        <SectionWaveDivider
-          bgClass="bg-ivory"
-          waveClass="text-forest"
-          fillOpacity={0.16}
-        />
-
-        <EventsSection />
-        <SectionWaveDivider
-          bgClass="bg-mist"
-          waveClass="text-orange"
-          fillOpacity={0.2}
-        />
-
-        <DonateCtaSection />
-        <SectionWaveDivider
-          bgClass="bg-forest"
-          waveClass="text-mint-off"
-          fillOpacity={1}
-          heightClass="h-16 sm:h-18"
-        />
-
-        <TestimonySection />
-        <SectionWaveDivider
-          bgClass="bg-cream"
-          waveClass="text-leaf"
-          fillOpacity={0.22}
-        />
-
-        <GallerySection />
-        <SectionWaveDivider
-          bgClass="bg-ivory"
-          waveClass="text-moss"
-          fillOpacity={0.2}
-        />
-
-        <ShareSection />
-        <SectionWaveDivider
-          bgClass="bg-paper"
-          waveClass="text-leaf"
-          fillOpacity={0.18}
-        />
-      </main>
-      <SiteFooter />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/admin/login" element={<AdminLoginPage />} />
+        <Route
+          path="/admin"
+          element={
+            <RequireAdmin>
+              <AdminLayout />
+            </RequireAdmin>
+          }
+        >
+          <Route index element={<AdminIndexPage />} />
+          <Route path="sections" element={<AdminSectionsPage />} />
+          <Route path="accueil" element={<AdminAccueilPage />} />
+          <Route path="qui" element={<AdminQuiPage />} />
+          <Route path="histoire" element={<AdminHistoirePage />} />
+          <Route path="comprendre" element={<AdminComprendrePage />} />
+          <Route path="besoins" element={<AdminBesoinsPage />} />
+          <Route path="cagnotte" element={<AdminCagnottePage />} />
+          <Route path="evenements" element={<AdminEvenementsPage />} />
+          <Route path="articles" element={<AdminArticlesPage />} />
+          <Route path="temoignage" element={<AdminTemoignagePage />} />
+          <Route path="galerie" element={<AdminGaleriePage />} />
+          <Route path="parametres" element={<AdminParametresPage />} />
+          <Route path="*" element={<Navigate to="/admin" replace />} />
+        </Route>
+        <Route path="/" element={<SitePage />} />
+        <Route path="*" element={<SitePage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

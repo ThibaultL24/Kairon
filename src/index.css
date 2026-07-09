@@ -67,3 +67,14 @@
     @apply bg-pale-sage/90 text-forest;
   }
 }
+
+@layer components {
+  .admin-shell {
+    @apply min-h-svh bg-linear-to-b from-mist via-ivory to-mint/40 text-ink;
+  }
+
+  .admin-input {
+    @apply block w-full rounded-xl border border-sage/40 bg-paper px-4 py-3.5 text-ink shadow-sm transition;
+    @apply focus:border-leaf focus:outline-none focus:ring-2 focus:ring-leaf/25;
+  }
+}

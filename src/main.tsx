@@ -1,11 +1,14 @@
 // src/main.tsx
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { AdminProvider } from './contexts/admin-context'
 import './index.css'
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <AdminProvider>
+      <App />
+    </AdminProvider>
   </StrictMode>,
 )

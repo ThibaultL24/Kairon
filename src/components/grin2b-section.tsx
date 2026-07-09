@@ -1,8 +1,11 @@
 // src/components/grin2b-section.tsx
 import { motion } from 'framer-motion'
+import { useSiteData } from '../hooks/use-admin'
 import { SectionPhoto } from './section-photo'
 
 export function Grin2bSection() {
+  const { grin2b } = useSiteData()
+
   return (
     <section
       id="comprendre"
@@ -19,32 +22,20 @@ export function Grin2bSection() {
           <div className="grid items-center gap-8 md:grid-cols-2">
             <div className="md:order-2">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
-                Pédagogique, sans promesse irréaliste
+                {grin2b.eyebrow}
               </p>
               <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">
-                Comprendre GRIN2B
+                {grin2b.title}
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-muted">
-                Le gène GRIN2B joue un rôle important dans la communication entre
-                les neurones. Lorsqu’il est altéré, cela peut entraîner des
-                troubles du développement, du tonus, de l’alimentation, du
-                sommeil, de la motricité, du langage ou encore des crises
-                neurologiques.
-              </p>
-              <p className="mt-4 text-lg leading-relaxed text-muted">
-                Chaque enfant atteint évolue différemment. Pour Kaïron, cela
-                signifie beaucoup de soins, une surveillance constante et un
-                accompagnement quotidien exigeant pour la famille.
-              </p>
+              <p className="mt-5 text-lg leading-relaxed text-muted">{grin2b.paragraph1}</p>
+              <p className="mt-4 text-lg leading-relaxed text-muted">{grin2b.paragraph2}</p>
             </div>
             <div className="overflow-hidden rounded-xl bg-ivory/60 md:order-1">
-              <SectionPhoto n={21} className="aspect-video w-full object-contain" />
+              <SectionPhoto n={grin2b.photoNumber} className="aspect-video w-full object-contain" />
             </div>
           </div>
           <blockquote className="mt-8 border-l-4 border-l-orange bg-ivory px-5 py-4 text-left text-[1.02rem] italic leading-relaxed text-muted">
-            Les soins et les stages ne garantissent rien, mais ils offrent à
-            Kaïron les meilleures chances de progresser à son rythme — avec
-            dignité, tendresse et exigence de vérité.
+            {grin2b.quote}
           </blockquote>
         </motion.div>
       </div>
