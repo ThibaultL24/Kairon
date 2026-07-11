@@ -30,12 +30,12 @@ export function AdminLoginPage() {
           <div className="px-6 pb-8 pt-7">
             <h1 className="font-display text-3xl text-ink">Espace famille</h1>
             <p className="mt-3 text-base leading-relaxed text-muted">
-              Ici vous pouvez modifier les textes, les événements, les photos et les actualités du
-              site — <strong className="font-semibold text-ink">sans toucher au code</strong>.
+              Ici vous modifiez le site pour <strong className="text-ink">tout le monde</strong>
+              : les changements sont visibles sur tous les navigateurs, pas seulement le vôtre.
             </p>
             <ul className="mt-4 space-y-2 text-sm text-muted">
-              <li>✓ Les changements se sauvegardent tout seuls</li>
-              <li>✓ Utilisez « Voir le site » pour contrôler le résultat</li>
+              <li>✓ Enregistrement automatique en ligne</li>
+              <li>✓ Même contenu sur mobile, tablette et ordinateur</li>
             </ul>
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
               <label className="block">

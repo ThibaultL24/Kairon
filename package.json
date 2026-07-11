@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seed:content": "tsx -e \"import { writeFileSync } from 'fs'; import { getDefaultAdminState } from './src/lib/admin-defaults.ts'; import { persistedAdminPayload } from './src/lib/admin-merge.ts'; writeFileSync('public/site-content.json', JSON.stringify(persistedAdminPayload(getDefaultAdminState()), null, 2));\""
   },
   "dependencies": {
+    "@upstash/redis": "^1.38.0",
     "@vercel/analytics": "^2.0.1",
     "framer-motion": "^12.38.0",
     "react": "^19.2.6",
@@ -22,6 +24,7 @@
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@vercel/node": "^5.8.23",
     "@vitejs/plugin-react": "^6.0.1",
     "autoprefixer": "^10.5.0",
     "eslint": "^10.3.0",
@@ -30,6 +33,7 @@
     "globals": "^17.6.0",
     "postcss": "^8.5.14",
     "tailwindcss": "^4.3.0",
+    "tsx": "^4.23.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12"

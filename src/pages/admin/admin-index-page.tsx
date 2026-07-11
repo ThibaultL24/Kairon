@@ -46,14 +46,14 @@ export function AdminIndexPage() {
     <div className="space-y-8">
       <AdminPageHeader
         title="Bonjour !"
-        subtitle="Choisissez ce que vous voulez modifier. Pas besoin de connaissances informatiques : tapez votre texte, c’est enregistré automatiquement."
+        subtitle="Choisissez ce que vous voulez modifier. Chaque changement est enregistré en ligne et visible par tous les visiteurs du site."
       />
 
       <AdminHelpBox title="Comment faire en 3 étapes">
         <ol className="mt-2 list-decimal space-y-1 pl-5">
           <li>Cliquez sur ce que vous voulez changer (événement, texte, photo…)</li>
-          <li>Modifiez les champs — tout se sauvegarde tout seul</li>
-          <li>Cliquez sur <strong>Voir le site</strong> (menu à gauche) pour vérifier</li>
+          <li>Modifiez les champs — l’enregistrement se fait tout seul</li>
+          <li>Ouvrez <strong>Voir le site</strong> sur un autre téléphone pour vérifier</li>
         </ol>
       </AdminHelpBox>
 

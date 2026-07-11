@@ -138,7 +138,8 @@ export function AdminLayout() {
               {showBackup ? (
                 <div className="space-y-2 rounded-xl border border-sage/20 bg-paper p-3">
                   <p className="text-xs leading-relaxed text-muted">
-                    Pour garder une copie de vos textes ou les retrouver sur un autre ordinateur.
+                    Copie de secours sur votre ordinateur (optionnel). Le site en ligne se met à
+                    jour automatiquement quand vous modifiez un texte dans l’admin.
                   </p>
                   <button
                     type="button"

@@ -1,0 +1,273 @@
+{
+  "sections": {
+    "accueil": true,
+    "qui": true,
+    "histoire": true,
+    "comprendre": true,
+    "pourquoi": true,
+    "objectif": true,
+    "evenements": true,
+    "articles": true,
+    "don": true,
+    "temoignage": true,
+    "galerie": true,
+    "partager": true
+  },
+  "urls": {
+    "associationHelloAsso": "https://www.helloasso.com/associations/un-souffle-d-espoir-pour-kairon",
+    "donation": "https://www.helloasso.com/associations/un-souffle-d-espoir-pour-kairon/formulaires/2"
+  },
+  "hero": {
+    "associationBadge": "Un souffle d’espoir pour Kaïron",
+    "title": "Kaïron avance à son rythme.",
+    "titleAccent": "Aidons-le à aller plus loin.",
+    "intro": "Kaïron a trois ans et demi. Une mutation rare du gène GRIN2B bouleverse son développement, son alimentation, son sommeil et sa motricité. L’association familiale collecte les dons pour financer stages, matériel et frais non pris en charge — afin que chaque progrès reste possible.",
+    "helloAssoNote": "Page HelloAsso de l’association : actualités, adhésions et transparence.",
+    "ctaPrimary": "Faire un don pour Kaïron",
+    "ctaSecondary": "Découvrir son histoire",
+    "photoNumber": 6
+  },
+  "about": {
+    "eyebrow": "Avant les mots du diagnostic",
+    "title": "Qui est Kaïron ?",
+    "paragraph1": "Kaïron est un petit garçon lumineux, câlin et courageux. Il aime la musique, les livres, les jouets qui brillent et les objets qui tournent. Malgré les épreuves, il garde ce sourire qui donne à sa famille la force d’avancer.",
+    "paragraph2": "Derrière chaque geste simple — tenir assis, se mettre à quatre pattes, manger, communiquer — il y a pour lui un immense travail. Et chaque petit progrès devient une grande victoire.",
+    "associationNote": "L’association « Un souffle d’espoir pour Kaïron » sur HelloAsso porte les actions et la transparence des fonds.",
+    "photoNote": "Une photo plus récente de la famille (avec Louciana) remplacera bientôt les visuels dès notre shooting photo.",
+    "photoNumber": 25
+  },
+  "story": {
+    "eyebrow": "Parcours",
+    "title": "Son histoire, en quelques étapes",
+    "photoNumber": 24,
+    "entries": [
+      {
+        "id": "0b95ecfd-fdc8-4136-b43c-ac31fb49f192",
+        "title": "Naissance",
+        "body": "Les premiers signes apparaissent très tôt : pleurs intenses, épisodes où il arrête de respirer, besoin constant de contact. L'alimentation devient vite compliquée ; les nuits, presque absentes."
+      },
+      {
+        "id": "63a21565-716d-40f8-a875-3ea053555779",
+        "title": "Trois semaines",
+        "body": "Un malaise devant la pédiatre mène aux urgences. En pleine période Covid, la famille affronte seule l'hôpital, les examens, l'inconnu. Puis vient l'urgence : Kaïron doit être transféré en hélicoptère vers un centre spécialisé — un moment si brutal pour des jeunes parents qu'il dépasse ce qu'on peut exprimer avec des mots."
+      },
+      {
+        "id": "636053e8-8c9d-40f7-89c4-f122b3af2d1e",
+        "title": "Les premiers mois",
+        "body": "Hospitalisations, prises de sang, imagerie, EEG, ponctions, tests génétiques… Kaïron endure tout, tout petit et déjà très fort. Une alimentation par sonde s'impose ; le tonus et le regard posent question."
+      },
+      {
+        "id": "efe4e413-e0f2-4bb9-b273-f21925b71cf6",
+        "title": "Le diagnostic",
+        "body": "Après de longs mois d'attente : une mutation du gène GRIN2B. Une réponse, mais peu de certitudes sur la parole, la marche ou l'ampleur des progrès possibles — une famille qui choisit malgré tout de se battre."
+      },
+      {
+        "id": "85b6e1ac-fe5e-4944-8dbb-99df75d2db8c",
+        "title": "Aujourd'hui",
+        "body": "Stages intensifs à l'étranger (notamment en Espagne), matériel adapté, séances spécialisées, et la présence du papa, de la maman, de la mamie, et de Louciana — sa petite sœur — qui applaudit chaque petit pas et célèbre chaque victoire. Kaïron avance, un jour après l'autre."
+      }
+    ]
+  },
+  "grin2b": {
+    "eyebrow": "Pédagogique, sans promesse irréaliste",
+    "title": "Comprendre GRIN2B",
+    "paragraph1": "Le gène GRIN2B joue un rôle important dans la communication entre les neurones. Lorsqu’il est altéré, cela peut entraîner des troubles du développement, du tonus, de l’alimentation, du sommeil, de la motricité, du langage ou encore des crises neurologiques.",
+    "paragraph2": "Chaque enfant atteint évolue différemment. Pour Kaïron, cela signifie beaucoup de soins, une surveillance constante et un accompagnement quotidien exigeant pour la famille.",
+    "quote": "Les soins et les stages ne garantissent rien, mais ils offrent à Kaïron les meilleures chances de progresser à son rythme — avec dignité, tendresse et exigence de vérité.",
+    "photoNumber": 21
+  },
+  "whyHelp": {
+    "eyebrow": "Concret",
+    "title": "Pourquoi aider ?",
+    "intro": "Les dons à l’association ne remplacent pas l’amour — ils l’épaulent. Voici les besoins que l’association aide à financer pour Kaïron.",
+    "closingQuote": "Pour beaucoup d’enfants, s’asseoir, manger ou se déplacer sont des étapes naturelles. Pour Kaïron, ce sont des montagnes. Votre aide peut l’aider à les gravir — sans spectacle, avec respect.",
+    "photoNumber": 17,
+    "rows": [
+      {
+        "id": "0b3610d8-fab7-41af-93cc-7fabe12c1003",
+        "need": "Stages de rééducation spécialisée (Barcelone, Pologne…)",
+        "why": "Seuls certains centres proposent une prise en charge ciblée GRIN2B avec des résultats concrets pour Kaïron — l'association aide à financer ces séjours. Chaque stage coûte 4 400 €, hors hébergement et frais annexes."
+      },
+      {
+        "id": "2becff36-68e6-42bf-b14f-e781c4884365",
+        "need": "Séances Snoezelen",
+        "why": "Un espace de calme et de découvertes sensorielles pour apaiser, rassurer et créer du lien."
+      },
+      {
+        "id": "01dca830-686b-463a-91de-53535cb920e9",
+        "need": "Matériel adapté du quotidien",
+        "why": "Chaussures adaptées et coques, bodys adaptés à la gastrostomie, équipements sur mesure : beaucoup de frais restent à la charge de la famille."
+      },
+      {
+        "id": "75ef5b37-d99b-43ab-bdc6-4b023a745aea",
+        "need": "Poussette médicalisée",
+        "why": "Faciliter les déplacements et le confort dans la durée."
+      },
+      {
+        "id": "ed050684-fbc3-41c7-a4d9-2243ab3d56fa",
+        "need": "Outil de communication (tablette, contrôle du regard)",
+        "why": "Donner d’autres voies pour exprimer besoins, envies, présence."
+      },
+      {
+        "id": "9df8d089-8d0b-4855-8f55-836caaa7b704",
+        "need": "Frais de déplacement",
+        "why": "Rendre possibles les soins spécialisés loin du domicile et les allers-retours du quotidien."
+      }
+    ]
+  },
+  "goal": {
+    "eyebrow": "Transparence",
+    "title": "Objectif de la cagnotte",
+    "intro": "Les dons à l’association « Un souffle d’espoir pour Kaïron » financent environ deux stages intensifs par an, du matériel adapté et les frais non remboursés liés au parcours de Kaïron. Les montants affichés pourront être affinés avec l’association : mieux vaut une estimation honnête qu’un appel flou.",
+    "footer": "Chaque don, même modeste, contribue aux soins, au matériel et aux stages. 5 €, 10 €, 20 € ou plus : chaque geste compte.",
+    "photoNumber": 8,
+    "goalEuros": 15000,
+    "collectedEuros": 0
+  },
+  "events": {
+    "eyebrow": "Association",
+    "title": "Projets & événements à venir",
+    "intro": "Rencontrez-nous sur nos actions : les fonds collectés par l’association « Un souffle d’espoir pour Kaïron » financent directement les besoins de Kaïron (stages, matériel, déplacements).",
+    "items": [
+      {
+        "id": "adad0633-ceb4-4d8c-ae33-c2cddaf10a70",
+        "title": "Foire du printemps",
+        "dateLabel": "7 juin 2026 · Althen-des-Paluds",
+        "detail": "L’association « Un souffle d’espoir pour Kaïron » sera présente sur un stand — venez nous rencontrer !",
+        "posterSrc": "/foire-althen-2026.png",
+        "posterAlt": "Affiche : l’association sera présente à la foire du printemps à Althen-des-Paluds le 7 juin 2026"
+      }
+    ]
+  },
+  "articles": {
+    "eyebrow": "Actualités",
+    "title": "Infos & articles",
+    "intro": "Nouvelles de l’association, comptes-rendus d’événements et informations utiles pour suivre le parcours de Kaïron.",
+    "items": []
+  },
+  "testimony": {
+    "eyebrow": "Paroles de maman",
+    "title": "Témoignage de la maman",
+    "signature": "— La maman de Kaïron",
+    "paragraphs": [
+      "Kaïron a aujourd'hui trois ans et demi.",
+      "Trois années de combat, de doutes, d'attente… mais surtout trois années d'un amour immense, indéfectible.",
+      "Sa vie a commencé comme celle de beaucoup d'autres bébés. Une grossesse globalement sans particularité, malgré un Covid assez marqué en début de parcours. Rien qui ne laissait imaginer la suite.",
+      "Et pourtant…",
+      "Dès sa naissance, quelque chose en moi s'est serré. Un pressentiment. Cet instinct de maman, silencieux mais puissant, qui murmure que quelque chose ne va pas.",
+      "Kaïron pleurait énormément. Mais surtout, à chaque crise, il arrêtait de respirer… son petit corps devenait bleu. Des instants suspendus, terrifiants. Il avait un besoin constant de contact, de chaleur, de moi. Le sein était son seul refuge. Il refusait la tétine, refusait le biberon… et très vite, même se nourrir devenait difficile.",
+      "Les jours passent, les nuits se confondent. Ou plutôt… les nuits n'existent presque pas.",
+      "Depuis sa naissance, Kaïron dort très peu. Encore aujourd'hui, il peut rester éveillé 4 à 5 heures d'affilée en pleine nuit. Les nuits sont courtes, hachées, épuisantes. Mais comme depuis le début… je m'accroche.",
+      "On parle de coliques du nourrisson, de reflux gastro-œsophagien… Mais au fond de moi, je sais que ce n'est pas ça.",
+      "Puis un jour, tout s'accélère.",
+      "Un malaise, devant la pédiatre. Cette fois, elle voit. Elle comprend. Ce n'est pas qu'un simple spasme du sanglot. Et sans hésiter, elle nous envoie immédiatement aux urgences.",
+      "Kaïron n'a que trois semaines.",
+      "Commence alors une plongée brutale dans le monde médical. Les examens, les attentes, l'inconnu. En pleine période Covid, je suis seule avec lui. Son papa doit rester dehors.",
+      "Puis cette phrase, qui fige le temps : « Madame, votre fils a quelque chose au cœur. Il faut l'héliporter en urgence. »",
+      "Le monde s'écroule.",
+      "Et comme si cela ne suffisait pas, une autre épreuve nous attend : nous ne pouvons pas l'accompagner.",
+      "Laisser partir son nouveau-né, seul, dans un hélicoptère… C'est une douleur que les mots ne peuvent pas vraiment raconter.",
+      "Nous le regardons partir, impuissants, le cœur arraché. Puis nous roulons, sans vraiment respirer, pour le rejoindre.",
+      "À notre arrivée, l'attente. Encore. Toujours.",
+      "Puis enfin, un peu de clarté.",
+      "On nous explique que Kaïron a bien une anomalie cardiaque. Une pathologie qui peut être sérieuse, mais qui, à son stade aujourd'hui, ne nécessite pas d'intervention et n'est pas la cause de ses malaises. Elle est surveillée régulièrement, mais ce n'est pas là que se trouve l'origine de ce que vit Kaïron.",
+      "Le soulagement est mêlé à une autre angoisse : si ce n'est pas ça… alors quoi ?",
+      "Nous restons hospitalisés. Et les jours deviennent des semaines, puis des mois rythmés par les examens : prises de sang, IRM, scanners, électroencéphalogrammes, ponctions lombaires, tests génétiques…",
+      "Kaïron endure tout. Si petit, et déjà si fort.",
+      "C'est lui qui nous porte. C'est lui qui nous apprend à tenir.",
+      "À ses côtés, je deviens une mère différente. Une mère prête à tout. Son papa, lui aussi, reste présent à chaque instant, même lorsque tout cela lui semble insurmontable. Il ne nous lâche jamais. Mamie est également présente, autant que possible malgré le contexte du Covid. Son soutien, même à distance, nous aide à tenir.",
+      "Très vite, Kaïron doit être nourri par sonde. Il ne parvient plus à téter suffisamment et efficacement, sa succion diminue, son développement est ralenti. Il ne tient pas sa tête, suit peu du regard, son tonus est atypique.",
+      "Et puis, après de longs mois d'attente…",
+      "Le diagnostic tombe.",
+      "Une mutation du gène GRIN2B.",
+      "Le syndrome GRIN2B est une maladie génétique rare qui affecte le fonctionnement du cerveau. Ce gène joue un rôle essentiel dans la communication entre les neurones. Lorsqu'il est altéré, cela peut entraîner des troubles du développement, du tonus, de l'alimentation, de la motricité, et parfois des difficultés de communication ou des crises neurologiques.",
+      "Chaque enfant atteint est unique. L'évolution est imprévisible.",
+      "On nous annonce alors que personne ne peut dire si Kaïron parlera un jour, s'il marchera, ni jusqu'où il pourra progresser.",
+      "Nous avons enfin une réponse… mais pas de certitudes.",
+      "Ce jour-là, quelque chose en moi se ferme. Les mots deviennent lointains. Je me raccroche à mon bébé, comme à une bouée.",
+      "Puis doucement… on apprend à revenir à la surface.",
+      "On choisit de se battre.",
+      "Très vite, les prises en charge s'enchaînent : kiné, orthophonie, psychomotricité… Les progrès sont lents, parfois invisibles pour les autres, souvent éprouvants. Mais ils sont là.",
+      "Et chaque petit pas devient une immense victoire.",
+      "Peu à peu, Kaïron commence aussi la diversification alimentaire.",
+      "À un an passé, nous vivons une immense victoire : le retrait de la sonde. Un moment qu'on n'osait presque plus espérer.",
+      "Une victoire immense… malheureusement temporaire.",
+      "Avec le temps, l'alimentation redevient difficile. Kaïron ne ressent ni la faim, ni l'envie de manger. Les repas deviennent une épreuve, une source de stress.",
+      "À ses trois ans, nous faisons le choix d'une gastrostomie. Un choix lourd, souvent repoussé… mais fait avec amour, pour lui apporter du confort.",
+      "Aujourd'hui, Kaïron avance, à son rythme.",
+      "Il commence à se mettre à quatre pattes. Il tient assis quelques instants avec appui. Il se met parfois debout en poussant du mieux qu'il peut sur ses jambes, avec notre aide.",
+      "Des gestes simples pour certains. Des montagnes pour nous.",
+      "Nous mettons tout en œuvre pour l'aider, allant jusqu'à partir en Espagne pour des stages de rééducation intensive. Et à chaque fois, il nous surprend.",
+      "Kaïron a la chance immense d'être entouré d'une famille présente, soudée, qui se bat avec nous chaque jour. Toujours là pour nous soutenir, nous aider, nous porter quand c'est trop lourd. Toujours là pour nous accompagner dans ces projets, souvent coûteux. Leur amour et leur engagement nous permettent d'avancer, même dans les moments les plus difficiles. Nous ne les remercierons jamais assez pour tout ce qu'ils font pour Kaïron et pour nous.",
+      "Il a aussi une petite sœur, Louciana, sa deuxième plus grande fan après maman. Du haut de son jeune âge, elle l'encourage, l'applaudit, le pousse à donner le meilleur de lui-même. Elle est si fière de lui, elle lui dit bravo à chaque petite victoire.",
+      "Elle voit en lui ce que nous voyons : un enfant extraordinaire.",
+      "Et leur lien, si pur, si fort, est sans doute l'une des plus belles forces dans cette aventure.",
+      "Et au milieu de tout ça, il y a aussi une personne que nous n'oublierons jamais.",
+      "Sa pédiatre.",
+      "Depuis le tout début, elle ne nous a jamais lâchés. Toujours présente, toujours à l'écoute, toujours à chercher des solutions, elle a été un soutien précieux dans les moments les plus difficiles.",
+      "Aujourd'hui encore, nous ne savons pas de quoi demain sera fait.",
+      "Nous ne savons pas jusqu'où Kaïron pourra aller.",
+      "Mais nous savons une chose.",
+      "Nous ne cesserons jamais de nous battre pour lui.",
+      "Parce que chaque petit progrès est une victoire. Parce que chaque sourire efface un peu la fatigue. Parce que lui, n'abandonne jamais.",
+      "Et dans ce combat, il nous apprend chaque jour l'essentiel : la force, la patience, la résilience… et cet amour brut, puissant, inconditionnel.",
+      "Kaïron avance à son rythme. Et nous, nous avançons avec lui.",
+      "Un jour après l'autre… toujours avec le sourire.",
+      "Et au fond, peut-être que c'est ça, le plus important.",
+      "Parce que Kaïron n'est pas seulement un petit garçon extraordinaire. Il est, et restera, notre plus grande leçon de vie."
+    ]
+  },
+  "gallery": {
+    "eyebrow": "Souvenirs",
+    "title": "Galerie",
+    "intro": "Quelques instants de la vie de Kaïron, partagés avec amour.",
+    "photoNumbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+    ]
+  },
+  "share": {
+    "eyebrow": "Solidarité",
+    "title": "Partager",
+    "intro": "Si vous ne pouvez pas donner, partager cette page est déjà une aide précieuse.",
+    "shareMessage": "Kaïron avance à son rythme — découvrez son histoire et comment l’aider."
+  },
+  "donate": {
+    "eyebrow": "Agir",
+    "title": "Faire un don",
+    "body": "Les dons passent par l’association « Un souffle d’espoir pour Kaïron » sur HelloAsso : ils financent directement les projets de Kaïron (stages spécialisés, matériel, déplacements) — pas un cadeau à la famille, un levier concret pour son parcours de soin.",
+    "footer": "Lien vers le formulaire HelloAsso de l’association (même cagnotte que sur les événements). Les fonds servent aux besoins de Kaïron selon les priorités validées par l’association.",
+    "photoNumber": 15
+  }
+}

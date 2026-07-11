@@ -6,6 +6,10 @@ export interface AdminContextValue {
   state: AdminState
   setState: (next: AdminState | ((prev: AdminState) => AdminState)) => void
   isAuthenticated: boolean
+  isContentReady: boolean
+  contentError: string | null
+  isSaving: boolean
+  saveError: string | null
   login: (identifier: string, password: string) => boolean
   logout: () => void
   resetToDefaults: () => void
