@@ -19,7 +19,7 @@ export function clearAdminCredentials(): void {
   sessionStorage.removeItem(ADMIN_CREDENTIALS_KEY)
 }
 
-function readAdminCredentials(): StoredCredentials | null {
+export function readAdminCredentials(): StoredCredentials | null {
   try {
     const raw = sessionStorage.getItem(ADMIN_CREDENTIALS_KEY)
     if (!raw) return null
@@ -27,6 +27,11 @@ function readAdminCredentials(): StoredCredentials | null {
   } catch {
     return null
   }
+}
+
+export function hasAdminCredentials(): boolean {
+  const credentials = readAdminCredentials()
+  return Boolean(credentials?.identifier && credentials?.password)
 }
 
 export async function fetchSiteContent(): Promise<AdminState | null> {
@@ -40,6 +45,49 @@ export async function fetchSiteContent(): Promise<AdminState | null> {
   }
 
   return (await response.json()) as AdminState
+}
+
+export type VerifyAdminResult =
+  | { ok: true; storageConfigured: boolean }
+  | { ok: false; error: string }
+
+/** Probe POST /api/content with __authCheck so client and server credentials stay aligned. */
+export async function verifyAdminCredentials(
+  identifier: string,
+  password: string,
+): Promise<VerifyAdminResult> {
+  try {
+    const response = await fetch('/api/content', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Admin-Identifier': identifier,
+        'X-Admin-Password': password,
+      },
+      body: JSON.stringify({ __authCheck: true }),
+    })
+
+    const payload = (await response.json().catch(() => null)) as
+      | { ok?: boolean; storageConfigured?: boolean; error?: string }
+      | null
+
+    if (!response.ok) {
+      return {
+        ok: false,
+        error: payload?.error ?? 'Identifiants incorrects',
+      }
+    }
+
+    return {
+      ok: true,
+      storageConfigured: Boolean(payload?.storageConfigured),
+    }
+  } catch {
+    return {
+      ok: false,
+      error: 'Impossible de joindre le serveur. Vérifiez votre connexion puis réessayez.',
+    }
+  }
 }
 
 export async function saveSiteContent(state: AdminState): Promise<void> {
