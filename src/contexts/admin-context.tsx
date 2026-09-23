@@ -6,16 +6,15 @@ import { mergeImportedAdminState, persistedAdminPayload } from '../lib/admin-mer
 import {
   clearAdminCredentials,
   fetchSiteContent,
+  hasAdminCredentials,
   saveSiteContent,
   storeAdminCredentials,
+  verifyAdminCredentials,
 } from '../lib/content-api'
 import { ADMIN_SESSION_KEY, type AdminState } from '../lib/admin-types'
 
-const DEFAULT_ADMIN_IDENTIFIER = 'kairon123'
-const DEFAULT_ADMIN_PASSWORD = 'kairon123'
-
 function readSession(): boolean {
-  return sessionStorage.getItem(ADMIN_SESSION_KEY) === '1'
+  return sessionStorage.getItem(ADMIN_SESSION_KEY) === '1' && hasAdminCredentials()
 }
 
 export function AdminProvider({ children }: { children: ReactNode }) {
@@ -25,7 +24,19 @@ export function AdminProvider({ children }: { children: ReactNode }) {
   const [contentError, setContentError] = useState<string | null>(null)
   const [isSaving, setIsSaving] = useState(false)
   const [saveError, setSaveError] = useState<string | null>(null)
+  const [storageConfigured, setStorageConfigured] = useState<boolean | null>(null)
+  const [lastSavedAt, setLastSavedAt] = useState<number | null>(null)
   const skipNextSave = useRef(true)
+  const stateRef = useRef(state)
+  stateRef.current = state
+
+  // Drop stale session flag if credentials were cleared (e.g. new tab without sessionStorage pair).
+  useEffect(() => {
+    if (sessionStorage.getItem(ADMIN_SESSION_KEY) === '1' && !hasAdminCredentials()) {
+      sessionStorage.removeItem(ADMIN_SESSION_KEY)
+      setIsAuthenticated(false)
+    }
+  }, [])
 
   useEffect(() => {
     let cancelled = false
@@ -56,6 +67,23 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  const persistNow = useCallback(async (nextState: AdminState) => {
+    setIsSaving(true)
+    setSaveError(null)
+    try {
+      await saveSiteContent(persistedAdminPayload(nextState))
+      setSaveError(null)
+      setLastSavedAt(Date.now())
+    } catch (error: unknown) {
+      setSaveError(
+        error instanceof Error ? error.message : 'Enregistrement impossible pour le moment.',
+      )
+      throw error
+    } finally {
+      setIsSaving(false)
+    }
+  }, [])
+
   useEffect(() => {
     if (!isContentReady || !isAuthenticated) return
     if (skipNextSave.current) {
@@ -64,55 +92,70 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     }
 
     const timer = window.setTimeout(() => {
-      setIsSaving(true)
-      setSaveError(null)
-      void saveSiteContent(persistedAdminPayload(state))
-        .then(() => setSaveError(null))
-        .catch((error: unknown) => {
-          setSaveError(
-            error instanceof Error ? error.message : 'Enregistrement impossible pour le moment.',
-          )
-        })
-        .finally(() => setIsSaving(false))
+      void persistNow(state).catch(() => {
+        /* saveError already set */
+      })
     }, 700)
 
     return () => window.clearTimeout(timer)
-  }, [state, isContentReady, isAuthenticated])
+  }, [state, isContentReady, isAuthenticated, persistNow])
 
   const setState = useCallback((next: AdminState | ((prev: AdminState) => AdminState)) => {
     setStateInternal(next)
   }, [])
 
-  const login = useCallback((identifier: string, password: string) => {
-    const expectedId =
-      (import.meta.env.VITE_ADMIN_IDENTIFIER as string | undefined) ?? DEFAULT_ADMIN_IDENTIFIER
-    const expectedPw =
-      (import.meta.env.VITE_ADMIN_PASSWORD as string | undefined) ?? DEFAULT_ADMIN_PASSWORD
-    if (identifier !== expectedId || password !== expectedPw) return false
+  const login = useCallback(async (identifier: string, password: string) => {
+    const result = await verifyAdminCredentials(identifier, password)
+    if (!result.ok) {
+      return { ok: false as const, error: result.error }
+    }
+
     sessionStorage.setItem(ADMIN_SESSION_KEY, '1')
     storeAdminCredentials(identifier, password)
+    setStorageConfigured(result.storageConfigured)
     setIsAuthenticated(true)
-    return true
+    skipNextSave.current = true
+
+    if (!result.storageConfigured) {
+      setSaveError(
+        'Connexion OK, mais Redis (Upstash) n’est pas configuré sur le serveur : les modifications ne seront pas visibles pour les autres visiteurs tant que UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN ne sont pas définis sur Vercel.',
+      )
+    } else {
+      setSaveError(null)
+    }
+
+    return { ok: true as const }
   }, [])
 
   const logout = useCallback(() => {
     sessionStorage.removeItem(ADMIN_SESSION_KEY)
     clearAdminCredentials()
     setIsAuthenticated(false)
+    setStorageConfigured(null)
+    setLastSavedAt(null)
+    setSaveError(null)
   }, [])
+
+  const saveNow = useCallback(async () => {
+    if (!isAuthenticated) return
+    skipNextSave.current = true
+    try {
+      await persistNow(stateRef.current)
+    } catch {
+      /* saveError already set */
+    }
+  }, [isAuthenticated, persistNow])
 
   const resetToDefaults = useCallback(() => {
     const defaults = getDefaultAdminState()
     setStateInternal(defaults)
     if (isAuthenticated) {
-      setIsSaving(true)
-      void saveSiteContent(persistedAdminPayload(defaults))
-        .catch((error: unknown) => {
-          setSaveError(error instanceof Error ? error.message : 'Réinitialisation non enregistrée.')
-        })
-        .finally(() => setIsSaving(false))
+      skipNextSave.current = true
+      void persistNow(defaults).catch(() => {
+        /* saveError already set */
+      })
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated, persistNow])
 
   const exportStateJson = useCallback(
     () => JSON.stringify(persistedAdminPayload(state), null, 2),
@@ -125,12 +168,10 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         const parsed = mergeImportedAdminState(JSON.parse(json) as Partial<AdminState>)
         setStateInternal(parsed)
         if (isAuthenticated) {
-          setIsSaving(true)
-          void saveSiteContent(persistedAdminPayload(parsed))
-            .catch((error: unknown) => {
-              setSaveError(error instanceof Error ? error.message : 'Import non enregistré en ligne.')
-            })
-            .finally(() => setIsSaving(false))
+          skipNextSave.current = true
+          void persistNow(parsed).catch(() => {
+            /* saveError already set */
+          })
         }
         return { ok: true as const }
       } catch (e) {
@@ -140,7 +181,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         }
       }
     },
-    [isAuthenticated],
+    [isAuthenticated, persistNow],
   )
 
   const value = useMemo(
@@ -152,8 +193,11 @@ export function AdminProvider({ children }: { children: ReactNode }) {
       contentError,
       isSaving,
       saveError,
+      storageConfigured,
+      lastSavedAt,
       login,
       logout,
+      saveNow,
       resetToDefaults,
       importState,
       exportStateJson,
@@ -166,8 +210,11 @@ export function AdminProvider({ children }: { children: ReactNode }) {
       contentError,
       isSaving,
       saveError,
+      storageConfigured,
+      lastSavedAt,
       login,
       logout,
+      saveNow,
       resetToDefaults,
       importState,
       exportStateJson,

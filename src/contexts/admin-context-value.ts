@@ -10,8 +10,14 @@ export interface AdminContextValue {
   contentError: string | null
   isSaving: boolean
   saveError: string | null
-  login: (identifier: string, password: string) => boolean
+  storageConfigured: boolean | null
+  lastSavedAt: number | null
+  login: (
+    identifier: string,
+    password: string,
+  ) => Promise<{ ok: true } | { ok: false; error: string }>
   logout: () => void
+  saveNow: () => Promise<void>
   resetToDefaults: () => void
   importState: (json: string) => { ok: boolean; error?: string }
   exportStateJson: () => string

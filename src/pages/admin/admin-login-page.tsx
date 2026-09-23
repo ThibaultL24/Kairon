@@ -9,16 +9,28 @@ export function AdminLoginPage() {
   const [identifier, setIdentifier] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   if (isAuthenticated) return <Navigate to="/admin" replace />
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setError('')
-    if (login(identifier, password)) {
-      navigate('/admin', { replace: true })
-    } else {
-      setError('Identifiant ou mot de passe incorrect. Réessayez ou contactez la personne qui gère le site.')
+    setIsSubmitting(true)
+    try {
+      const result = await login(identifier, password)
+      if (result.ok) {
+        navigate('/admin', { replace: true })
+      } else {
+        setError(
+          result.error ||
+            'Identifiant ou mot de passe incorrect. Réessayez ou contactez la personne qui gère le site.',
+        )
+      }
+    } catch {
+      setError('Impossible de vérifier les identifiants. Réessayez dans un instant.')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -47,6 +59,7 @@ export function AdminLoginPage() {
                   onChange={(e) => setIdentifier(e.target.value)}
                   className="admin-input mt-2 px-4 py-3.5 text-base"
                   placeholder="Exemple : kairon123"
+                  disabled={isSubmitting}
                 />
               </label>
               <label className="block">
@@ -57,6 +70,7 @@ export function AdminLoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="admin-input mt-2 px-4 py-3.5 text-base"
+                  disabled={isSubmitting}
                 />
               </label>
               {error ? (
@@ -66,9 +80,10 @@ export function AdminLoginPage() {
               ) : null}
               <button
                 type="submit"
-                className="w-full rounded-full bg-leaf px-6 py-4 text-base font-bold text-paper shadow-sm transition hover:bg-forest"
+                disabled={isSubmitting}
+                className="w-full rounded-full bg-leaf px-6 py-4 text-base font-bold text-paper shadow-sm transition hover:bg-forest disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Entrer dans l’espace de modification
+                {isSubmitting ? 'Vérification…' : 'Entrer dans l’espace de modification'}
               </button>
             </form>
             <p className="mt-6 text-center text-sm text-muted">
